@@ -125,7 +125,7 @@ function reportSoftWrap(params, onError, paragraph, baseLineNumber, continuation
 
 /** @type {import("markdownlint").Rule} */
 const rule = {
-  "names": [ "enabled" ],
+  "names": [ "single-line-paragraphs" ],
   "description": "Prose paragraphs should each use a single source line",
   "tags": [ "line_length" ],
   "parser": "micromark",

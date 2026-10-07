@@ -1,7 +1,11 @@
-### 0.1.1 (Next)
+### 0.2.1 (Next)
+
+* Your contribution here.
+
+### 0.2.0 (2026/10/07)
 
 * Added a changelog - [@dblock](https://github.com/dblock).
-* Your contribution here.
+* Renamed the rule from `enabled` to `single-line-paragraphs` and moved its enablement flag under the rule configuration - [@dblock](https://github.com/dblock).
 
 ### 0.1.0 (2026/10/07)
 

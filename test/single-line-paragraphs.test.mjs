@@ -13,7 +13,9 @@ function lintContent(content) {
     "customRules": [ rule ],
     "config": {
       "default": false,
-      "enabled": true
+      "single-line-paragraphs": {
+        "enabled": true
+      }
     }
   });
   return result.content;
@@ -26,6 +28,29 @@ function errorsFor(content) {
 function fixedContent(content) {
   return applyFixes(content, lintContent(content));
 }
+
+test("uses the single-line-paragraphs rule name", () => {
+  assert.deepEqual(rule.names, [ "single-line-paragraphs" ]);
+});
+
+test("can be disabled in its configuration", () => {
+  const result = lint({
+    "strings": {
+      "content": [
+        "This paragraph is",
+        "soft wrapped."
+      ].join("\n")
+    },
+    "customRules": [ rule ],
+    "config": {
+      "default": false,
+      "single-line-paragraphs": {
+        "enabled": false
+      }
+    }
+  });
+  assert.deepEqual(result.content, []);
+});
 
 test("reports every line in each soft-wrapped paragraph", () => {
   const content = [
