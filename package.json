@@ -15,7 +15,16 @@
     "markdownlint",
     "markdown"
   ],
+  "author": "Daniel Doubrovkine",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dblock/markdownlint-rule-single-line-paragraphs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dblock/markdownlint-rule-single-line-paragraphs/issues"
+  },
+  "homepage": "https://github.com/dblock/markdownlint-rule-single-line-paragraphs#readme",
   "engines": {
     "node": ">=22"
   },
