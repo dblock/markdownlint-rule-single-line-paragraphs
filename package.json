@@ -1,0 +1,25 @@
+{
+  "name": "markdownlint-rule-single-line-paragraphs",
+  "version": "0.1.0",
+  "description": "A markdownlint custom rule that disallows soft-wrapped prose paragraphs.",
+  "main": "index.cjs",
+  "files": [
+    "index.cjs",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "markdownlint-rule",
+    "markdownlint",
+    "markdown"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "markdownlint": ">=0.41.1"
+  },
+  "devDependencies": {
+    "markdownlint": "0.41.1"
+  }
+}
