@@ -6,13 +6,13 @@ import { lint } from "markdownlint/sync";
 const require = createRequire(import.meta.url);
 const rule = require("../index.cjs");
 
-function errorsFor(content, name = "single-line-paragraphs") {
+function errorsFor(content) {
   const result = lint({
     "strings": { content },
     "customRules": [ rule ],
     "config": {
       "default": false,
-      [name]: true
+      "enable": true
     }
   });
   return result.content.map(({ lineNumber }) => lineNumber);
@@ -101,8 +101,4 @@ test("ignores non-paragraph block constructs", () => {
 test("allows long single-line paragraphs", () => {
   const content = "This paragraph is intentionally much longer than a typical configured line-length limit but remains on one source line.";
   assert.deepEqual(errorsFor(content), []);
-});
-
-test("supports the no-hard-wrap alias", () => {
-  assert.deepEqual(errorsFor("Softly wrapped\nparagraph.", "no-hard-wrap"), [ 2 ]);
 });

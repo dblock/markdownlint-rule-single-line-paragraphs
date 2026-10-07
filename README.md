@@ -12,18 +12,16 @@ The rule applies to paragraphs at the document root and inside lists or blockquo
 
 ## Usage
 
-Load the exported rule through markdownlint's `customRules` option and enable `single-line-paragraphs`:
+Load the exported rule through markdownlint's `customRules` option and enable it with the `enable` rule name:
 
 ```javascript
 const rule = require("markdownlint-rule-single-line-paragraphs");
 const options = {
   "customRules": [ rule ],
   "config": {
-    "single-line-paragraphs": true
+    "enable": true
   }
 };
 ```
-
-The alias `no-hard-wrap` is also available.
 
 The rule reports one issue per soft-wrapped paragraph on its first continuation line. It does not provide an automatic fix.

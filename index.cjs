@@ -36,7 +36,7 @@ function isHardBreak(line) {
 
 /** @type {import("markdownlint").Rule} */
 const rule = {
-  "names": [ "single-line-paragraphs", "no-hard-wrap" ],
+  "names": [ "enable" ],
   "description": "Prose paragraphs should each use a single source line",
   "tags": [ "line_length" ],
   "parser": "micromark",
