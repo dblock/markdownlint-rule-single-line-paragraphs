@@ -25,6 +25,10 @@
     "url": "https://github.com/dblock/markdownlint-rule-single-line-paragraphs/issues"
   },
   "homepage": "https://github.com/dblock/markdownlint-rule-single-line-paragraphs#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "engines": {
     "node": ">=22"
   },
