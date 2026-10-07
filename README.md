@@ -12,14 +12,14 @@ The rule applies to paragraphs at the document root and inside lists or blockquo
 
 ## Usage
 
-Load the exported rule through markdownlint's `customRules` option and enable it with the `enable` rule name:
+Load the exported rule through markdownlint's `customRules` option and enable it with the `enabled` rule name:
 
 ```javascript
 const rule = require("markdownlint-rule-single-line-paragraphs");
 const options = {
   "customRules": [ rule ],
   "config": {
-    "enable": true
+    "enabled": true
   }
 };
 ```

@@ -12,7 +12,7 @@ function errorsFor(content) {
     "customRules": [ rule ],
     "config": {
       "default": false,
-      "enable": true
+      "enabled": true
     }
   });
   return result.content.map(({ lineNumber }) => lineNumber);

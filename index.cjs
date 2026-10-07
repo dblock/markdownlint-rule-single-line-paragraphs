@@ -36,7 +36,7 @@ function isHardBreak(line) {
 
 /** @type {import("markdownlint").Rule} */
 const rule = {
-  "names": [ "enable" ],
+  "names": [ "enabled" ],
   "description": "Prose paragraphs should each use a single source line",
   "tags": [ "line_length" ],
   "parser": "micromark",
