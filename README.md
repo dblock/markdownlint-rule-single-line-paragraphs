@@ -1,17 +1,16 @@
 # markdownlint-rule-single-line-paragraphs
 
-A custom [markdownlint](https://github.com/DavidAnson/markdownlint) rule that
-requires each prose paragraph to use one source line.
+A custom [markdownlint](https://github.com/DavidAnson/markdownlint) rule that requires each prose paragraph to use one source line.
 
-The rule applies to paragraphs at the document root and inside lists or
-blockquotes. It permits explicit Markdown hard breaks created by two or more
-trailing spaces or an unescaped trailing backslash. It does not apply to
-headings, code blocks, tables, HTML blocks, front matter, or definitions.
+The rule applies to paragraphs at the document root and inside lists or blockquotes. It permits explicit Markdown hard breaks created by two or more trailing spaces or an unescaped trailing backslash. It does not apply to headings, code blocks, tables, HTML blocks, front matter, or definitions.
+
+## Motivation
+
+[To Wrap or Not to Wrap in Markdown?](https://code.dblock.org/2021/06/07/to-wrap-or-not-to-wrap-in-markdown.html) explains the motivation for keeping each paragraph on one source line. Soft line breaks do not affect rendered Markdown, but wrapping and reflowing prose can turn a small wording edit into changes across several lines. Keeping a paragraph on one line produces cleaner diffs and lets GitHub highlight the words that actually changed.
 
 ## Usage
 
-Load the exported rule through markdownlint's `customRules` option and enable
-`single-line-paragraphs`:
+Load the exported rule through markdownlint's `customRules` option and enable `single-line-paragraphs`:
 
 ```javascript
 const rule = require("markdownlint-rule-single-line-paragraphs");
@@ -25,5 +24,4 @@ const options = {
 
 The alias `no-hard-wrap` is also available.
 
-The rule reports one issue per soft-wrapped paragraph on its first continuation
-line. It does not provide an automatic fix.
+The rule reports one issue per soft-wrapped paragraph on its first continuation line. It does not provide an automatic fix.
