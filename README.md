@@ -24,4 +24,4 @@ const options = {
 };
 ```
 
-The rule reports one issue per soft-wrapped paragraph on its first continuation line. It does not provide an automatic fix.
+The rule reports one issue on the first line of each soft-wrapped paragraph segment and one issue on every continuation line. This coordinated set of diagnostics lets markdownlint's fix mode append the continuation text to the first line and delete the original continuation lines.
