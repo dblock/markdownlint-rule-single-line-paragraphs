@@ -16,6 +16,9 @@
     "markdown"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "peerDependencies": {
     "markdownlint": ">=0.41.1"
   },
