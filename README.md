@@ -46,7 +46,7 @@ A quick brown fox jumps over the lazy dog.
 Explicit Markdown hard breaks remain valid:
 
 ```markdown
-This line ends with a hard break.  
+This line ends with a hard break.\
 This line remains separate.
 ```
 
