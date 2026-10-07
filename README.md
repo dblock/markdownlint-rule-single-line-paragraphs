@@ -77,3 +77,7 @@ becomes:
 
 > A blockquote continued on another line.
 ```
+
+## License
+
+This project is available under the [MIT License](LICENSE).
