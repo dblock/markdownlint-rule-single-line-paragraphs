@@ -4,6 +4,7 @@
   "description": "A markdownlint custom rule that disallows soft-wrapped prose paragraphs.",
   "main": "index.cjs",
   "files": [
+    "CHANGELOG.md",
     "index.cjs",
     "README.md"
   ],
