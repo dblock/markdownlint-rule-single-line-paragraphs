@@ -4,7 +4,7 @@
 
 A custom [markdownlint](https://github.com/DavidAnson/markdownlint) rule that requires each prose paragraph to use one source line.
 
-The rule applies to paragraphs at the document root and inside lists or blockquotes. It permits explicit Markdown hard breaks created by two or more trailing spaces or an unescaped trailing backslash. It does not apply to headings, code blocks, tables, HTML blocks, front matter, or definitions.
+The rule applies to paragraphs at the document root and inside lists or blockquotes. It permits explicit Markdown hard breaks created by two or more trailing spaces or an unescaped trailing backslash. It also treats `<br>`, `<br/>`, and `<br />` tags at the beginning or end of a source line as intentional breaks. It does not apply to headings, code blocks, tables, HTML blocks, front matter, or definitions.
 
 ## Motivation
 
@@ -48,6 +48,16 @@ Explicit Markdown hard breaks remain valid:
 ```markdown
 This line ends with a hard break.\
 This line remains separate.
+```
+
+HTML break tags at either side of a line boundary also remain valid:
+
+```markdown
+This line ends with a break.<br>
+This line remains separate.
+
+This line is followed by a break.
+<br>This line remains separate.
 ```
 
 ## Fixing

@@ -125,6 +125,42 @@ test("fixes soft wrapping after an explicit hard break", () => {
   );
 });
 
+test("allows HTML breaks at either side of a line boundary", () => {
+  const content = [
+    "A break tag at the end is intentional.<br>",
+    "This line remains separate.",
+    "",
+    "A self-closing break is intentional.<br/>",
+    "This line remains separate.",
+    "",
+    "A spaced self-closing break is intentional.<BR />",
+    "This line remains separate.",
+    "",
+    "A break tag at the beginning is intentional.",
+    "<br>This line remains separate.",
+    "",
+    "> A blockquote break is intentional.",
+    "> <br />This line remains separate."
+  ].join("\n");
+  assert.deepEqual(errorsFor(content), []);
+});
+
+test("fixes soft wrapping after an HTML break", () => {
+  const content = [
+    "An HTML break remains.<br>",
+    "This line is softly",
+    "wrapped."
+  ].join("\n");
+  assert.deepEqual(errorsFor(content), [ 2, 3 ]);
+  assert.equal(
+    fixedContent(content),
+    [
+      "An HTML break remains.<br>",
+      "This line is softly wrapped."
+    ].join("\n")
+  );
+});
+
 test("ignores non-paragraph block constructs", () => {
   const content = [
     "---",

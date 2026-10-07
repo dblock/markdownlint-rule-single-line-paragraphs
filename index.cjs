@@ -68,11 +68,26 @@ function isHardBreak(line) {
   return (backslashes % 2) === 1;
 }
 
+function hasHtmlBreakAtEnd(line) {
+  return /<br\s*\/?>\s*$/iu.test(line);
+}
+
+function hasHtmlBreakAtStart(line) {
+  const content = line.replace(/^(?:(?: {0,3}>[ \t]?)|[ \t])*/u, "");
+  return /^<br\s*\/?>/iu.test(content);
+}
+
+function isHardBoundary(line, nextLine) {
+  return isHardBreak(line) ||
+    hasHtmlBreakAtEnd(line) ||
+    hasHtmlBreakAtStart(nextLine);
+}
+
 function getContinuationText(line, lineNumber, columns) {
   const fallbackColumn = (line.match(/^(?:(?: {0,3}>[ \t]?)|[ \t])*/u) || [ "" ])[0].length + 1;
   const column = columns.get(lineNumber) || fallbackColumn;
   const text = line.slice(column - 1);
-  return isHardBreak(line) ? text : text.trimEnd();
+  return (isHardBreak(line) || hasHtmlBreakAtEnd(line)) ? text : text.trimEnd();
 }
 
 function reportSoftWrap(params, onError, paragraph, baseLineNumber, continuationLineNumbers) {
@@ -120,7 +135,10 @@ const rule = {
       let baseLineNumber = paragraph.startLine;
       let continuationLineNumbers = [];
       for (let lineNumber = paragraph.startLine; lineNumber < paragraph.endLine; lineNumber++) {
-        if (isHardBreak(params.lines[lineNumber - 1])) {
+        if (isHardBoundary(
+          params.lines[lineNumber - 1],
+          params.lines[lineNumber]
+        )) {
           reportSoftWrap(
             params,
             onError,
