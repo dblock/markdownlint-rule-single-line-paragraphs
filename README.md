@@ -25,3 +25,55 @@ const options = {
 ```
 
 The rule reports one issue on the first line of each soft-wrapped paragraph segment and one issue on every continuation line. This coordinated set of diagnostics lets markdownlint's fix mode append the continuation text to the first line and delete the original continuation lines.
+
+## Violations
+
+This paragraph is soft-wrapped across two source lines:
+
+```markdown
+A quick brown fox jumps
+over the lazy dog.
+```
+
+The rule reports a violation on both lines. The first violation identifies the line that should absorb the continuation text, and the second identifies the continuation line that should be removed.
+
+A paragraph on one source line is valid, regardless of its length:
+
+```markdown
+A quick brown fox jumps over the lazy dog.
+```
+
+Explicit Markdown hard breaks remain valid:
+
+```markdown
+This line ends with a hard break.  
+This line remains separate.
+```
+
+## Fixing
+
+When the markdownlint integration supports fixes, applying them converts the soft-wrapped example into:
+
+```markdown
+A quick brown fox jumps over the lazy dog.
+```
+
+The fix attached to the first violation appends the continuation text. The fix attached to each continuation-line violation deletes that original line. For paragraphs spanning more than two lines, all continuation text is appended in order and every continuation line is removed.
+
+Fixing preserves explicit hard breaks and their following lines. It also removes list indentation and blockquote prefixes from continuation lines when joining their text:
+
+```markdown
+- A list item
+  continued on another line.
+
+> A blockquote
+> continued on another line.
+```
+
+becomes:
+
+```markdown
+- A list item continued on another line.
+
+> A blockquote continued on another line.
+```
